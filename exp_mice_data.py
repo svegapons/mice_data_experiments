@@ -5,6 +5,7 @@ from scipy.io import loadmat
 from statsmodels.distributions.empirical_distribution import ECDF
 from kernel_two_sample_test import MMD2u, compute_null_distribution
 import matplotlib.pyplot as plt
+import pdb
 
 
 def load_structural_data(path_b6, path_btbr):
@@ -207,14 +208,14 @@ def compute_mmd_struc_func(k_mat, struc_b6, struc_btbr, func_b6, func_btbr, iter
     plt.ylabel('$p(MMD^2_u)$')
     plt.title('$MMD^2_u$: null-distribution and observed values')
     
-    ax.annotate('p-value: %s' %(struc_p_value), xy=(float(struc_mmd), 3.),  xycoords='data',
-                    xytext=(-100, 30), textcoords='offset points',
+    ax.annotate('p-value: %s' %(struc_p_value), xy=(float(struc_mmd), 4.),  xycoords='data',
+                    xytext=(-105, 30), textcoords='offset points',
                     bbox=dict(boxstyle="round", fc="1."),
                     arrowprops=dict(arrowstyle="->",
                                     connectionstyle="angle,angleA=0,angleB=90,rad=10"),
                     )
                     
-    ax.annotate('p-value: %s' %(func_p_value), xy=(float(func_mmd), 3.),  xycoords='data',
+    ax.annotate('p-value: %s' %(func_p_value), xy=(float(func_mmd), 4.),  xycoords='data',
                 xytext=(10, 30), textcoords='offset points',
                 bbox=dict(boxstyle="round", fc="1."),
                 arrowprops=dict(arrowstyle="->",
@@ -222,6 +223,7 @@ def compute_mmd_struc_func(k_mat, struc_b6, struc_btbr, func_b6, func_btbr, iter
                 )
                     
     plt.legend(numpoints=1)
+    
     
     
 def compute_distance_mmd(k_mat, struc_b6, struc_btbr, func_b6, func_btbr, iterations=100000):
